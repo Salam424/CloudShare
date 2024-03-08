@@ -9,8 +9,8 @@ function UploadForm({ uploadBtnClick, progress }) {
 
   const onFileSelect = (file) => {
     console.log(file);
-    if (file && file.size > 2000000) {
-      setErrorMsg("You can only store a file that has size less than 2MB");
+    if (file && file.size > 20000000) {
+      setErrorMsg("You can only store a file that has size less than 20MB");
       return;
     }
     setErrorMsg(null);
