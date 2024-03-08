@@ -12,11 +12,11 @@ function FileInfo({ file }) {
   }, [file]);
 
   return (
-    <div className="text-center border flex justify-center m-4 flex-col items-center p-2 border-blue-200 rounded-lg">
+    <div className="text-center  border flex justify-center m-4 flex-col items-center p-2 border-blue-200 rounded-lg">
       {fileType === "image" && file?.fileUrl ? (
-        <Image src={file?.fileUrl} width={200} height={200} alt="File" />
+        <Image src={file?.fileUrl} width={250} height={250} alt="File" />
       ) : (
-        <img src="/file.png" alt="File" width={200} height={200} />
+        <img src="/file.png" alt="File" width={250} height={250} />
       )}
       <div className="">
         <h2>{file?.fileName}</h2>

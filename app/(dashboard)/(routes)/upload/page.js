@@ -56,7 +56,7 @@ function Upload() {
       userName: user?.fullName,
       password: "",
       id: docId,
-      shortUrl: process.env.NEXT_PUBLIC_BASE_URL + docId,
+      shortUrl: process.env.NEXT_PUBLIC_BASE_URL + "file/" + docId,
     });
     setUploadCompleted(true); // Mark upload as completed
     setFileDocId(docId);

@@ -15,7 +15,10 @@ function FileShareForm({ file, onPasswordSave }) {
               disabled
               className="disabled:text-gray-500 bg-transparent outline-none w-full"
             />
-            <Copy className="text-gray-400 hover:text-gray-600 cursor-pointer" />
+            <Copy
+              className="text-gray-400 hover:text-gray-600 cursor-pointer"
+              onClick={() => navigator.clipboard.writeText(file.shortUrl)}
+            />
           </div>
         </div>
         <div className="gap-3 flex mt-5 ">
@@ -30,8 +33,9 @@ function FileShareForm({ file, onPasswordSave }) {
             <div className="border rounded-md w-full p-2">
               <input
                 type="password"
-                className="disabled:text-gray-500 bg-transparent outline-none"
+                className=" bg-transparent border-b border-gray-300 w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none"
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
               />
             </div>
             <button
@@ -43,21 +47,10 @@ function FileShareForm({ file, onPasswordSave }) {
             </button>
           </div>
         ) : null}
-        <div className="border rounded-md p-3 mt-5">
-          <label className="text-[14px] text-gray-500">
-            Send it to your friend!
-          </label>
-          <div className="border rounded-md p-2">
-            <input
-              type="text"
-              placeholder="example@gmail.com"
-              className="bg-transparent outline-none"
-            />
-          </div>
-          <button className="p-2 disabled:bg-gray-300 bg-primary text-white hover:bg-blue-600 w-full mt-2 rounded-md">
-            Send Email
-          </button>
-        </div>
+
+        <button className="p-2 disabled:bg-gray-300 bg-primary text-white hover:bg-blue-600 w-full mt-2 rounded-md">
+          Open
+        </button>
       </div>
     )
   );
