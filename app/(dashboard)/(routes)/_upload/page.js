@@ -9,19 +9,16 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
-import { useUser } from "@clerk/nextjs";
+
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/navigation";
-import AlertUploadedDone from "./_components/AlertUploadedDone";
 
 function Upload() {
-  const { user } = useUser();
   const [progress, setProgress] = useState();
   const router = useRouter();
   const storage = getStorage(app);
   const [uploadCompleted, setUploadCompleted] = useState(false);
   const db = getFirestore(app);
-  const [fileDocId, setFileDocId] = useState();
 
   const uploadFile = (file) => {
     const storageRef = ref(storage, "file-upload/" + file?.name);
@@ -52,45 +49,16 @@ function Upload() {
       fileSize: file?.size,
       fileType: file?.type,
       fileUrl: fileUrl,
-      userEmail: user?.primaryEmailAddress.emailAddress,
-      userName: user?.fullName,
       password: "",
       id: docId,
       shortUrl: process.env.NEXT_PUBLIC_BASE_URL + "file/" + docId,
     });
     setUploadCompleted(true); // Mark upload as completed
-    setFileDocId(docId);
+    router.push("file-preview/" + docId); // Navigate to the preview page
   };
 
-  useEffect(() => {
-    console.log("Trigger");
-
-    if (progress === 100) {
-      setTimeout(() => {
-        setUploadCompleted(true);
-      }, 2000);
-    }
-  }, [progress]);
-
-  useEffect(() => {
-    if (uploadCompleted) {
-      setTimeout(() => {
-        setUploadCompleted(false);
-        console.log("fileDOcId", fileDocId);
-        router.push("file-preview/" + fileDocId);
-      }, 2000);
-    }
-  }, [uploadCompleted]);
-
   return (
-    <div className="p-5 px-8 md:px-28">
-      {uploadCompleted && <AlertUploadedDone />}{" "}
-      {/* Show AlertUploadedDone when uploadCompleted is true */}
-      <h2 className="text-[20px] text-center m-5">
-        Start
-        <strong className="text-primary"> Uploading </strong> File and{" "}
-        <strong className="text-primary"> Share </strong> it
-      </h2>
+    <div>
       <UploadForm
         uploadBtnClick={(file) => uploadFile(file)}
         progress={progress}

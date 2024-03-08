@@ -26,7 +26,7 @@ function FileView({ params }) {
   return (
     <div className="bg-gray-100 h-screen w-full flex justify-center items-center flex-col gap-4">
       <Link href="/">
-        <Image src="/logo.svg" width={150} height={100} alt="logo" />
+        <Image src="/logo.png" width={180} height={130} alt="logo" />
       </Link>
       <FileItem file={file} />
     </div>

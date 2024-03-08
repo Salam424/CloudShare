@@ -9,8 +9,8 @@ function fileItem({ file }) {
         <div className="p-5 rounded-md bg-white flex flex-col items-center">
           <div className="text-center flex-col gap-3 items-center flex">
             <h2 className="text-[20px] text-gray-600">
-              <strong className="text-primary">{file.userName} </strong>
-              Share file with you
+              <strong className="text-primary">Cloud Share </strong>
+              allows you to share files with your friend
             </h2>
             <h2 className="text-[10px] text-gray-400">Find File details</h2>
             <Image

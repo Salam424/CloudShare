@@ -35,11 +35,11 @@ function FilePreview({ params }) {
   };
 
   return (
-    <div className="py-10 px-20">
-      <Link href="/upload" className="flex gap-3">
-        <ArrowLeftSquare /> Go to Upload
+    <div className="py-10 px-20 md:py-14 md:px-18">
+      <Link href="/" className="flex gap-3 text-base md:text-lg">
+        <ArrowLeftSquare className="h-5 w-5 md:h-6 md:w-6" /> Go Back
       </Link>
-      <div className="grid grid-cols-1 md:grid-cols-2 mt-5">
+      <div className="grid grid-cols-1 mt-5 md:mt-8">
         <FileInfo file={file} />
         <FileShareForm
           file={file}
