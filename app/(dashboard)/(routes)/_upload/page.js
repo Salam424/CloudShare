@@ -51,7 +51,7 @@ function Upload() {
       fileUrl: fileUrl,
       password: "",
       id: docId,
-      shortUrl: process.env.NEXT_PUBLIC_BASE_URL + "file/" + docId,
+      shortUrl: "https://cloud-share-murex.vercel.app/" + "file/" + docId,
     });
     setUploadCompleted(true); // Mark upload as completed
     router.push("file-preview/" + docId); // Navigate to the preview page
